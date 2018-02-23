@@ -102,7 +102,6 @@ class DatabaseTable {
     return $this->pdo->lastInsertId();
   }
 
-
   private function update($fields) {
     $query = ' UPDATE `' . $this->table . '` SET ';
 
@@ -119,7 +118,6 @@ class DatabaseTable {
 
     $this->query($query, $fields);
   }
-
 
   public function delete($id) {
     $parameters = [':id' => $id];
