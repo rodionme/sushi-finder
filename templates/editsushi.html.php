@@ -16,13 +16,15 @@
 
     <?php foreach ($types as $type): ?>
 
-      <?php if ($sushi && $sushi->hasType($type->id)): ?>
-        <input type="checkbox" checked name="type[]" value="<?= $type->id ?>" />
-      <?php else: ?>
-        <input type="checkbox" name="type[]" value="<?= $type->id ?>" />
-      <?php endif; ?>
+      <label>
+        <?php if ($sushi && $sushi->hasType($type->id)): ?>
+          <input type="checkbox" checked name="type[]" value="<?= $type->id ?>" />
+        <?php else: ?>
+          <input type="checkbox" name="type[]" value="<?= $type->id ?>" />
+        <?php endif; ?>
 
-      <label><?= $type->name ?></label>
+        <?= $type->name ?>
+      </label>
     <?php endforeach; ?>
 
 
@@ -32,13 +34,15 @@
 
     <?php foreach ($ingredients as $ingredient): ?>
 
-      <?php if ($sushi && $sushi->hasIngredient($ingredient->id)): ?>
-        <input type="checkbox" checked name="ingredient[]" value="<?= $ingredient->id ?>" />
-      <?php else: ?>
-        <input type="checkbox" name="ingredient[]" value="<?= $ingredient->id ?>" />
-      <?php endif; ?>
+      <label>
+        <?php if ($sushi && $sushi->hasIngredient($ingredient->id)): ?>
+          <input type="checkbox" checked name="ingredient[]" value="<?= $ingredient->id ?>" />
+        <?php else: ?>
+          <input type="checkbox" name="ingredient[]" value="<?= $ingredient->id ?>" />
+        <?php endif; ?>
 
-      <label><?= $ingredient->name ?></label>
+        <?= $ingredient->name ?>
+      </label>
     <?php endforeach; ?>
 
     <input type="submit" name="submit" value="Save">

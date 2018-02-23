@@ -9,6 +9,8 @@
   <div class="sushi">
     <p><?= $totalSushi ?> sushi have been submitted to the Sushi Finder.</p>
 
+    <a href="/sushi/edit">Add a new Sushi</a>
+
     <?php foreach ($sushi as $singleSushi): ?>
       <blockquote>
         <?= $singleSushi->name ?>
@@ -42,3 +44,4 @@
       <?php endif; ?>
     <?php endfor; ?>
   </div>
+</div>

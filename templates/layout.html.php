@@ -15,7 +15,8 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/sushi/list">Sushi List</a></li>
-      <li><a href="/sushi/edit">Add a new Sushi</a></li>
+      <li><a href="/type/list">Types List</a></li>
+      <li><a href="/ingredient/list">Ingredients List</a></li>
       <?php if ($loggedIn): ?>
         <li><a href="/logout">Log out</a></li>
       <?php else: ?>
