@@ -174,7 +174,7 @@ class SushiRoutes implements \Framework\Routes {
       '' => [
         'GET' => [
           'controller' => $sushiController,
-          'action' => 'home',
+          'action' => 'list',
         ],
       ],
     ];
