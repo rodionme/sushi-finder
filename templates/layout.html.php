@@ -7,19 +7,19 @@
 </head>
 
 <body>
-  <nav>
-    <header>
-      <h1>Sushi Finder</h1>
-    </header>
+  <header>
+    <h1>Sushi Finder</h1>
+  </header>
 
-    <ul>
-      <li><a href="/sushi/list">Sushi</a></li>
-      <li><a href="/type/list">Types</a></li>
-      <li><a href="/ingredient/list">Ingredients</a></li>
+  <nav class="main-menu">
+    <ul class="menu-list">
+      <li class="menu-item"><a href="/sushi/list">Sushi</a></li>
+      <li class="menu-item"><a href="/type/list">Types</a></li>
+      <li class="menu-item"><a href="/ingredient/list">Ingredients</a></li>
       <?php if ($loggedIn): ?>
-        <li><a href="/logout">Log out</a></li>
+        <li class="menu-item"><a href="/logout">Log out</a></li>
       <?php else: ?>
-        <li><a href="/login">Log in</a></li>
+        <li class="menu-item"><a href="/login">Log in</a></li>
       <?php endif; ?>
     </ul>
   </nav>

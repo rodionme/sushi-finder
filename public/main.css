@@ -1,0 +1,80 @@
+body {
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+header {
+  font-family: serif;
+}
+
+table {
+  width: 100%;
+}
+tr {}
+th,
+td {
+  padding: 3px 6px;
+}
+
+a,
+.link {
+  color: inherit;
+}
+
+main {
+  display: flex;
+}
+
+
+.main-menu {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 140%;
+  color: #333;
+}
+.menu-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.menu-item {}
+.menu-item + .menu-item {
+  margin-left: 20px;
+}
+
+
+.content {}
+
+.intro {
+  color: #aaa;
+}
+
+.sushi-list {}
+.sushi {}
+
+.ingredients-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.ingredients-list > .list-item + .list-item {
+  margin-left: 6px;
+}
+.ingredient {
+  display: block;
+  padding: 2px 4px;
+  background-color: #ccc;
+}
+
+
+.filters {
+  width: 300px;
+  border-left: 1px solid #aaa;
+}
+
+
+.pagination {}
+.page {}
+.current {}
