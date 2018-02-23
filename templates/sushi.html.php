@@ -1,6 +1,6 @@
 <div class="sushilist">
 
-  <ul class="categories">
+  <ul class="types">
     <?php foreach ($types as $type): ?>
       <li><a href="/sushi/list?type=<?= $type->id ?>"><?= $type->name ?></a><li>
     <?php endforeach; ?>
@@ -11,7 +11,7 @@
 
     <?php foreach ($sushi as $singleSushi): ?>
       <blockquote>
-        <?= (new \Framework\Markdown($singleSushi->name))->toHtml() ?>
+        <?= $singleSushi->name ?>
 
         <?php if ($user): ?>
           <?php if ($user->id == $singleSushi->authorId): ?>
@@ -34,8 +34,7 @@
     $numPages = ceil($totalSushi / 10);
 
     for ($i = 1; $i <= $numPages; $i++):
-      if ($i == $currentPage):
-        ?>
+      if ($i == $currentPage): ?>
         <a class="currentpage"
            href="/sushi/list?page=<?= $i ?><?= !empty($categoryId) ? '&category=' . $categoryId : '' ?>"><?= $i ?></a>
       <?php else: ?>
