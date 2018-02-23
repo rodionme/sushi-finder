@@ -9,15 +9,18 @@ class Sushi {
   private $authorsTable;
   private $sushiTable;
   private $typesTable;
+  private $ingredientsTable;
   private $authentication;
 
   public function __construct(DatabaseTable $sushiTable,
                               DatabaseTable $authorsTable,
                               DatabaseTable $typesTable,
+                              DatabaseTable $ingredientsTable,
                               Authentication $authentication) {
     $this->sushiTable = $sushiTable;
     $this->authorsTable = $authorsTable;
     $this->typesTable = $typesTable;
+    $this->ingredientsTable = $ingredientsTable;
     $this->authentication = $authentication;
   }
 
@@ -27,14 +30,14 @@ class Sushi {
 
     if (isset($_GET['type'])) {
       $type = $this->typesTable->findById($_GET['type']);
-      $sushi = $type->getJokes(10, $offset);
+      $sushi = $type->getSushi(10, $offset);
       $totalSushi = $type->getNumSushi();
     } else {
       $sushi = $this->sushiTable->findAll('name DESC', 10, $offset);
       $totalSushi = $this->sushiTable->total();
     }
 
-    $title = 'Sushi list';
+    $title = 'Sushi List';
     $author = $this->authentication->getUser();
 
     return [
@@ -79,9 +82,14 @@ class Sushi {
     $sushiEntity = $author->addSushi($sushi);
 
     $sushiEntity->clearTypes();
+    $sushiEntity->clearIngredients();
 
     foreach ($_POST['type'] as $typeId) {
       $sushiEntity->addType($typeId);
+    }
+
+    foreach ($_POST['ingredient'] as $ingredientId) {
+      $sushiEntity->addIngredient($ingredientId);
     }
 
     header('location: /sushi/list');
@@ -90,6 +98,7 @@ class Sushi {
   public function edit() {
     $author = $this->authentication->getUser();
     $types = $this->typesTable->findAll();
+    $ingredients = $this->ingredientsTable->findAll();
 
     if (isset($_GET['id'])) {
       $sushi = $this->sushiTable->findById($_GET['id']);
@@ -101,9 +110,10 @@ class Sushi {
       'template' => 'editsushi.html.php',
       'title' => $title,
       'variables' => [
-        'joke' => $sushi ?? null,
+        'sushi' => $sushi ?? null,
         'user' => $author,
         'types' => $types,
+        'ingredients' => $ingredients,
       ],
     ];
   }

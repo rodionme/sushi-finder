@@ -5,8 +5,10 @@ namespace Sushi;
 class SushiRoutes implements \Framework\Routes {
   private $authorsTable;
   private $sushiTable;
-  private $categoriesTable;
+  private $typesTable;
+  private $ingredientsTable;
   private $sushiTypesTable;
+  private $sushiIngredientsTable;
   private $authentication;
 
   public function __construct() {
@@ -14,16 +16,18 @@ class SushiRoutes implements \Framework\Routes {
 
     $this->sushiTable = new \Framework\DatabaseTable($pdo, 'sushi', 'id', '\Sushi\Entity\Sushi', [&$this->authorsTable, &$this->sushiTypesTable]);
     $this->authorsTable = new \Framework\DatabaseTable($pdo, 'author', 'id', '\Sushi\Entity\Author', [&$this->sushiTable]);
-    $this->categoriesTable = new \Framework\DatabaseTable($pdo, 'type', 'id', '\Sushi\Entity\Type', [&$this->sushiTable, &$this->sushiTypesTable]);
+    $this->typesTable = new \Framework\DatabaseTable($pdo, 'type', 'id', '\Sushi\Entity\Type', [&$this->sushiTable, &$this->sushiTypesTable]);
+    $this->ingredientsTable = new \Framework\DatabaseTable($pdo, 'ingredient', 'id', '\Sushi\Entity\Ingredient', [&$this->sushiTable, &$this->sushiIngredientsTable]);
     $this->sushiTypesTable = new \Framework\DatabaseTable($pdo, 'sushi_type', 'typeId');
+    $this->sushiIngredientsTable = new \Framework\DatabaseTable($pdo, 'sushi_ingredient', 'ingredientId');
     $this->authentication = new \Framework\Authentication($this->authorsTable, 'email', 'password');
   }
 
   public function getRoutes(): array {
-    $sushiController = new \Sushi\Controllers\Sushi($this->sushiTable, $this->authorsTable, $this->categoriesTable, $this->authentication);
+    $sushiController = new \Sushi\Controllers\Sushi($this->sushiTable, $this->authorsTable, $this->typesTable, $this->ingredientsTable, $this->authentication);
     $authorController = new \Sushi\Controllers\Register($this->authorsTable);
     $loginController = new \Sushi\Controllers\Login($this->authentication);
-    $typeController = new \Sushi\Controllers\Type($this->categoriesTable);
+    $typeController = new \Sushi\Controllers\Type($this->typesTable);
 
     return [
       'author/register' => [
