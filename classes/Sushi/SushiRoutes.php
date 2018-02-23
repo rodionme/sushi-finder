@@ -28,6 +28,7 @@ class SushiRoutes implements \Framework\Routes {
     $authorController = new \Sushi\Controllers\Register($this->authorsTable);
     $loginController = new \Sushi\Controllers\Login($this->authentication);
     $typeController = new \Sushi\Controllers\Type($this->typesTable);
+    $ingredientController = new \Sushi\Controllers\Ingredient($this->ingredientsTable);
 
     return [
       'author/register' => [
@@ -137,6 +138,34 @@ class SushiRoutes implements \Framework\Routes {
       'type/delete' => [
         'POST' => [
           'controller' => $typeController,
+          'action' => 'delete',
+        ],
+        'login' => true,
+      ],
+
+      'ingredient/list' => [
+        'GET' => [
+          'controller' => $ingredientController,
+          'action' => 'list',
+        ],
+        'login' => true,
+      ],
+
+      'ingredient/edit' => [
+        'POST' => [
+          'controller' => $ingredientController,
+          'action' => 'saveEdit',
+        ],
+        'GET' => [
+          'controller' => $ingredientController,
+          'action' => 'edit',
+        ],
+        'login' => true,
+      ],
+
+      'ingredient/delete' => [
+        'POST' => [
+          'controller' => $ingredientController,
           'action' => 'delete',
         ],
         'login' => true,
