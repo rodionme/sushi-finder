@@ -48,6 +48,7 @@ class Sushi {
         'sushi' => $sushi,
         'user' => $author,
         'types' => $this->typesTable->findAll(),
+        'ingredients' => $this->ingredientsTable->findAll(),
         'currentPage' => $page,
         'typeId' => $_GET['type'] ?? null,
       ],
