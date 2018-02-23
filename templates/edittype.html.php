@@ -4,5 +4,5 @@
   <label for="type">Enter type name:</label>
   <input type="text" id="type" name="type[name]" value="<?= $type->name ?? '' ?>" />
 
-  <input type="submit" name="submit" value="Save">
+  <button type="submit">Save</button>
 </form>

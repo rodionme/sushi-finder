@@ -4,5 +4,5 @@
   <label for="ingredient">Enter ingredient name:</label>
   <input type="text" id="ingredient" name="ingredient[name]" value="<?= $ingredient->name ?? '' ?>" />
 
-  <input type="submit" name="submit" value="Save">
+  <button type="submit">Save</button>
 </form>

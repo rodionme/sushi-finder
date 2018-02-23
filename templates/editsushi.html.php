@@ -45,7 +45,7 @@
       </label>
     <?php endforeach; ?>
 
-    <input type="submit" name="submit" value="Save">
+    <button type="submit">Save</button>
   </form>
 
 <?php else: ?>
