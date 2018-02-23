@@ -14,7 +14,7 @@ class SushiRoutes implements \Framework\Routes {
   public function __construct() {
     include __DIR__ . '/../../includes/DatabaseConnection.php';
 
-    $this->sushiTable = new \Framework\DatabaseTable($pdo, 'sushi', 'id', '\Sushi\Entity\Sushi', [&$this->authorsTable, &$this->sushiTypesTable]);
+    $this->sushiTable = new \Framework\DatabaseTable($pdo, 'sushi', 'id', '\Sushi\Entity\Sushi', [&$this->authorsTable, &$this->sushiTypesTable, &$this->sushiIngredientsTable]);
     $this->authorsTable = new \Framework\DatabaseTable($pdo, 'author', 'id', '\Sushi\Entity\Author', [&$this->sushiTable]);
     $this->typesTable = new \Framework\DatabaseTable($pdo, 'type', 'id', '\Sushi\Entity\Type', [&$this->sushiTable, &$this->sushiTypesTable]);
     $this->ingredientsTable = new \Framework\DatabaseTable($pdo, 'ingredient', 'id', '\Sushi\Entity\Ingredient', [&$this->sushiTable, &$this->sushiIngredientsTable]);
