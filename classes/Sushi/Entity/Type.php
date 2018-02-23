@@ -16,15 +16,15 @@ class Type {
   }
 
   public function getSushi($limit = null, $offset = null) {
-    $sushiTypes = $this->sushiTypesTable->find('tyId', $this->id, null, $limit, $offset);
+    $sushiTypes = $this->sushiTypesTable->find('typeId', $this->id, null, $limit, $offset);
 
     $sushi = [];
 
     foreach ($sushiTypes as $sushiType) {
-      $sushi = $this->sushiTable->findById($sushiType->sushiId);
+      $singleSushi = $this->sushiTable->findById($sushiType->sushiId);
 
-      if ($sushi) {
-        $sushi[] = $sushi;
+      if ($singleSushi) {
+        $sushi[] = $singleSushi;
       }
     }
 
