@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/main.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
   <title><?= $title ?></title>
 </head>
 
 <body>
   <header>
-    <h1>Sushi Finder</h1>
+    <a href="/"><h1>Sushi Finder</h1></a>
   </header>
 
   <nav class="main-menu">
