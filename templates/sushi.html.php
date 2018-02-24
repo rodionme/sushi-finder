@@ -25,14 +25,14 @@
               </td>
 
               <td>
-                <!-- TODO: Fix type -->
-                <span><?= htmlspecialchars($types[0]->name, ENT_QUOTES, 'UTF-8') ?></span>
+                <?php foreach ($singleSushi->getTypes() as $type): ?>
+                  <span><?= htmlspecialchars($type->name, ENT_QUOTES, 'UTF-8') ?></span>
+                <?php endforeach; ?>
               </td>
 
               <td>
                 <ul class="ingredients-list">
-                  <!-- TODO: Fix ingredients list-->
-                  <?php foreach ($ingredients as $ingredient): ?>
+                  <?php foreach ($singleSushi->getIngredients() as $ingredient): ?>
                     <li class="list-item">
                       <span class="ingredient"><?= htmlspecialchars($ingredient->name, ENT_QUOTES, 'UTF-8') ?></span>
                     </li>

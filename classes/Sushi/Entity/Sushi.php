@@ -8,14 +8,20 @@ class Sushi {
   public $authorId;
   private $authorsTable;
   private $author;
+  private $typesTable;
   private $sushiTypesTable;
+  private $ingredientsTable;
   private $sushiIngredientsTable;
 
   public function __construct(\Framework\DatabaseTable $authorsTable,
+                              \Framework\DatabaseTable $typesTable,
                               \Framework\DatabaseTable $sushiTypesTable,
+                              \Framework\DatabaseTable $ingredientsTable,
                               \Framework\DatabaseTable $sushiIngredientsTable) {
     $this->authorsTable = $authorsTable;
+    $this->typesTable = $typesTable;
     $this->sushiTypesTable = $sushiTypesTable;
+    $this->ingredientsTable = $ingredientsTable;
     $this->sushiIngredientsTable = $sushiIngredientsTable;
   }
 
@@ -34,6 +40,17 @@ class Sushi {
     ];
 
     $this->sushiTypesTable->save($sushiType);
+  }
+
+  public function getTypes() {
+    $types = [];
+    $sushiTypes = $this->sushiTypesTable->find('sushiId', $this->id);
+
+    foreach ($sushiTypes as $sushiType) {
+      $types[] = $this->typesTable->findById($sushiType->typeId);
+    }
+
+    return $types;
   }
 
   public function hasType($typeId) {
@@ -57,6 +74,17 @@ class Sushi {
     ];
 
     $this->sushiIngredientsTable->save($sushiIngredient);
+  }
+
+  public function getIngredients() {
+    $ingredients = [];
+    $sushiIngredients = $this->sushiIngredientsTable->find('sushiId', $this->id);
+
+    foreach ($sushiIngredients as $sushiIngredient) {
+      $ingredients[] = $this->ingredientsTable->findById($sushiIngredient->ingredientId);
+    }
+
+    return $ingredients;
   }
 
   public function hasIngredient($ingredientId) {
