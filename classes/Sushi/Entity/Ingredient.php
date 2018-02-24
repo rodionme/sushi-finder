@@ -21,10 +21,10 @@ class Ingredient {
     $sushi = [];
 
     foreach ($sushiIngredients as $sushiIngredient) {
-      $sushi = $this->sushiTable->findById($sushiIngredient->sushiId);
+      $singleSushi = $this->sushiTable->findById($sushiIngredient->sushiId);
 
-      if ($sushi) {
-        $sushi[] = $sushi;
+      if ($singleSushi) {
+        $sushi[] = $singleSushi;
       }
     }
 
