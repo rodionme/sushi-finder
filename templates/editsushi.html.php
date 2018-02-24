@@ -7,7 +7,7 @@
     <input id="name" name="sushi[name]" type="text" value="<?= $sushi->name ?? '' ?>">
 
     <label for="altname">Type your sushi alternative names here:</label>
-    <textarea id="altname" name="altname[name]" rows="3" cols="40"><?= $sushi->altname ?? '' ?></textarea>
+    <textarea id="altname" name="sushi[altName]" rows="3" cols="40"><?= $sushi->altName ?? '' ?></textarea>
 
 
     <!-- Types -->

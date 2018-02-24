@@ -9,6 +9,7 @@
         <thead>
           <tr>
             <th><span>Name</span></th>
+            <th><span>Alt. Name</span></th>
             <th><span>Type</span></th>
             <th><span>Ingredients</span></th>
             <?php if ($user): ?>
@@ -22,6 +23,10 @@
             <tr>
               <td>
                 <span><?= $singleSushi->name ?></span>
+              </td>
+
+              <td>
+                <span><?= $singleSushi->altName ?></span>
               </td>
 
               <td>
