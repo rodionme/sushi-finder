@@ -54,6 +54,10 @@ class SushiRoutes implements \Framework\Routes {
           'controller' => $sushiController,
           'action' => 'list',
         ],
+        'POST' => [
+          'controller' => $sushiController,
+          'action' => 'filter',
+        ],
       ],
 
       'sushi/edit' => [

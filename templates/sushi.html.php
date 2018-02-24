@@ -11,7 +11,9 @@
             <th><span>Name</span></th>
             <th><span>Type</span></th>
             <th><span>Ingredients</span></th>
-            <th colspan="2"><span>Actions</span></th>
+            <?php if ($user): ?>
+              <th colspan="2"><span>Actions</span></th>
+            <?php endif; ?>
           </tr>
         </thead>
 
@@ -23,11 +25,13 @@
               </td>
 
               <td>
+                <!-- TODO: Fix type -->
                 <span><?= htmlspecialchars($types[0]->name, ENT_QUOTES, 'UTF-8') ?></span>
               </td>
 
               <td>
                 <ul class="ingredients-list">
+                  <!-- TODO: Fix ingredients list-->
                   <?php foreach ($ingredients as $ingredient): ?>
                     <li class="list-item">
                       <span class="ingredient"><?= htmlspecialchars($ingredient->name, ENT_QUOTES, 'UTF-8') ?></span>
@@ -78,5 +82,51 @@
 </div>
 
 <aside class="filters">
-  <h3>Filters will be here</h3>
+  <h3>Filters</h3>
+
+  <form action="" method="post">
+    <p>Types:</p>
+
+    <?php foreach ($types as $type): ?>
+      <label>
+        <?php if (!empty($_POST['type']) && $_POST['type'] == $type->id): ?>
+          <input type="radio" checked name="type" value="<?= $type->id ?>" />
+        <?php else: ?>
+          <input type="radio" name="type" value="<?= $type->id ?>" />
+        <?php endif; ?>
+
+
+        <?= $type->name ?>
+      </label>
+    <?php endforeach; ?>
+
+    <label>
+      <?php if (empty($_POST['type'])): ?>
+        <input type="radio" checked name="type" value="" />
+      <?php else: ?>
+        <input type="radio" name="type" value="" />
+      <?php endif; ?>
+      Doesn't matter
+    </label>
+
+
+    <p>Ingredients:</p>
+
+    <?php foreach ($ingredients as $ingredient): ?>
+      <label>
+        <?php
+        $selectedIngredients = $_POST['ingredient'] ?? [];
+
+        if (in_array($ingredient->id, $selectedIngredients)): ?>
+          <input type="checkbox" checked name="ingredient[]" value="<?= $ingredient->id ?>" />
+        <?php else: ?>
+          <input type="checkbox" name="ingredient[]" value="<?= $ingredient->id ?>" />
+        <?php endif; ?>
+
+        <?= $ingredient->name ?>
+      </label>
+    <?php endforeach; ?>
+
+    <button type="submit">Submit</button>
+  </form>
 </aside>
