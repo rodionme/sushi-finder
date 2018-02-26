@@ -1,10 +1,20 @@
+html {
+  height: 100%;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 500px;
+  margin: 0;
   font-size: 16px;
   font-family: sans-serif;
 }
 
 header {
   font-family: serif;
+  background-color: #0b3812;
 }
 
 table {
@@ -21,16 +31,34 @@ a,
   color: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 main {
   display: flex;
+  flex-grow: 1;
+  /*align-items: stretch;*/
+}
+
+
+.logo {
+  display: block;
+  padding: 1.5em 20px;
+  text-decoration: none;
+}
+.logo > h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #eee;
 }
 
 
 .main-menu {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  font-size: 140%;
-  color: #333;
+  padding: 12px 20px;
+  font-size: 130%;
+  background-color: #5c8c5a;
+  color: #000;
 }
 .menu-list {
   display: flex;
@@ -42,15 +70,33 @@ main {
 .menu-item + .menu-item {
   margin-left: 20px;
 }
+.menu-item a {
+  text-decoration: none;
+}
+.menu-item a:hover {
+  text-decoration: underline;
+}
 
 
-.content {}
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 0 20px;
+}
 
 .intro {
   color: #aaa;
 }
 
-.sushi-list {}
+.add-sushi {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.sushi-list {
+  overflow: auto;
+}
 .sushi {}
 
 .ingredients-list {
@@ -60,18 +106,38 @@ main {
   padding-left: 0;
 }
 .ingredients-list > .list-item + .list-item {
-  margin-left: 6px;
+  margin-left: 4px;
 }
 .ingredient {
   display: block;
-  padding: 2px 4px;
-  background-color: #ccc;
+  padding: 3px 6px;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #186b25;
 }
 
 
 .filters {
-  width: 300px;
-  border-left: 1px solid #aaa;
+  flex-shrink: 0;
+  width: 20%;
+  min-width: 200px;
+  overflow: auto;
+  padding: 10px 20px;
+  box-shadow: inset #888 0 0 7px 0;
+  background-color: #efefef;
+}
+.filter {
+  display: block;
+  margin-top: 6px;
+  cursor: pointer;
+}
+.filters button {
+  margin-top: 16px;
+  padding: 4px 10px;
+  border: none;
+  font-size: 110%;
+  color: #fff;
+  background-color: #0b3812;
 }
 
 

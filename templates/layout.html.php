@@ -9,7 +9,7 @@
 
 <body>
   <header>
-    <a href="/"><h1>Sushi Finder</h1></a>
+    <a class="logo" href="/"><h1>Sushi Finder</h1></a>
   </header>
 
   <nav class="main-menu">
