@@ -52,7 +52,8 @@ class Login {
   }
 
   public function logout() {
-    unset($_SESSION);
+    unset($_SESSION['username']);
+    unset($_SESSION['password']);
 
     return [
       'template' => 'logout.html.php',
